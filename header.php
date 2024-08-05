@@ -41,7 +41,7 @@ li a:hover:not(.active) {
   background-color: #04AA6D;
 }
 
-input[type=text], select {
+input[type=text],input[type=email],input[type=password], select {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -70,6 +70,12 @@ div {
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;
+}
+
+.div1 {
+    width: 70%;
+    margin:auto;
+    text-align:center;
 }
 </style>
 
