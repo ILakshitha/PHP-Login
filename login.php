@@ -5,8 +5,6 @@ include_once 'header.php'
 <div id="div1">
        <form action="includes/login.inc.php" method="post">
 
-       <label for="fname">Name</label>
-    <input type="text" id="name" name="name" placeholder="Your name..">
 
     <label for="lname">Email</label>
     <input type="email" id="email" name="email" placeholder="Enter your Email">
@@ -16,6 +14,8 @@ include_once 'header.php'
   
     <input type="submit" value="Submit">
        </form>
+
+       <p>New Here ?<a href="signup.php">Register.</a></p>
        </div>
         <?php
 include_once 'footer.php' 
