@@ -6,8 +6,8 @@ include_once 'header.php'
        <form action="includes/login.inc.php" method="post">
 
 
-    <label for="lname">Email</label>
-    <input type="email" id="email" name="email" placeholder="Enter your Email">
+    <label for="lname">User Name</label>
+    <input type="text" id="uid" name="uid" placeholder="Enter your User Name">
 
     <label for="password">password</label>
     <input type="password" id ="pwd" name="email" placeholder="Enter Your Password"/>
