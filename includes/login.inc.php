@@ -6,7 +6,15 @@ if (isset($_POST["submit"])) {
   require_once 'dbh.inc.php';
   require_once 'functions.inc.php';
 
-  if(emptyInputs($username, $pwd) !==false) {
+  $emptyinputs = emptyInputsSignup($name, $email, $username,$pwd, $pwdrepeat);
+  $invalidUid = invalidUid($username);
+  $invalidEmail = invalidEmail($email);
+  $pwdMatch = pwdMatch($pwd , $pwdMatch);
+  $uidExists  = uidExists($conn, $username, $email);
+
+  if(emptyInputsLogin($username, $pwd) !==false) {
+    header("Location:../signup.php?error=emptyinput")
+
     exit();
   }
 }
