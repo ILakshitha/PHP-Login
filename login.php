@@ -10,9 +10,9 @@ include_once 'header.php'
     <input type="text" id="uid" name="uid" placeholder="Enter your User Name">
 
     <label for="password">password</label>
-    <input type="password" id ="pwd" name="email" placeholder="Enter Your Password"/>
+    <input type="password" id ="pwd" name="pwd" placeholder="Enter Your Password"/>
   
-    <input type="submit" value="Submit">
+    <input type="submit" name="submit" value="Submit">
        </form>
 
        <p>New Here ?<a href="signup.php">Register.</a></p>
