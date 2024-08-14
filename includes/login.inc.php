@@ -6,13 +6,14 @@ if (isset($_POST["submit"])) {
   require_once 'dbh.inc.php';
   require_once 'functions.inc.php';
 
-  $emptyinputs = emptyInputLogin($username, $pwd);
 
 
   if(emptyInputLogin($username, $pwd) !==false) {
     
     exit();
   }
+
+  loginUser($conn, $username, $pwd);
 }
 else{
     header('Location:../login.php');
