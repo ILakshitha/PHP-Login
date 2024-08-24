@@ -76,6 +76,12 @@ div {
   padding: 20px;
 }
 
+.error{
+  color:red;
+  border: 1px solid red;
+  padding: 12px;
+  font-size: 12px;
+}
 .div1 {
     width: 70%;
     margin:auto;
@@ -90,6 +96,17 @@ div {
 <ul>
   <li><a class="active" href="">Home</a></li>
   
-  <li style="float:right"><a href="login.php">Login</a></li>
+  
+    <?php 
+    if(isset($_SESSION["username"])){
+      echo'<li style="float:right"><a href= "profile.php">'.$_SESSION["username"] .'</a></li>'; 
+      echo'<li style="float:right"><a href= "includes/logout.inc.php">LogOut</a></li>'; 
+    }
+     else{
+      echo '<li style="float:right"><a href="login.php">login</a></li>';
+    }
+  
+    ?>
+  
 </ul>
 <div class="container" style="margin: 20px;">
