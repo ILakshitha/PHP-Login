@@ -101,6 +101,7 @@ div {
     if(isset($_SESSION["username"])){
       echo'<li style="float:right"><a href= "profile.php">'.$_SESSION["username"] .'</a></li>'; 
       echo'<li style="float:right"><a href= "includes/logout.inc.php">LogOut</a></li>'; 
+      echo'<li style="float:right"><a href= "includes/blogs/v_create.php">Create Blog</a></li>'; 
     }
      else{
       echo '<li style="float:right"><a href="login.php">login</a></li>';
