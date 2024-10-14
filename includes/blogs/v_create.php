@@ -1,5 +1,40 @@
+<?php
+session_start();
+
+require_once '../dbh.inc.php';
+if (!isset($_SESSION["username"])) {
+    die("You must be logged in to create a post.");
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
+    $title = trim(filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING));
+    $description = trim(filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING));
+    $date = date("Y-m-d H:i:s");
+    $author = $_SESSION["username"];
+
+    if (empty($title) || empty($description)) {
+        $error = "Title and description are required.";
+    } else {
+        $stmt = $conn->prepare("INSERT INTO blogs (blogsTitle, blogsDescription, date, author) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $title, $description, $date, $author);
+
+        if ($stmt->execute()) {
+            $success = "Blog post created successfully.";
+        } else {
+            $error = "Error creating blog post: " . $stmt->error;
+        }
+
+        $stmt->close();
+    }
+}
+
+$conn->close();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,20 +48,25 @@
             margin: 0 auto;
             padding: 20px;
         }
+
         h1 {
             color: #2c3e50;
         }
+
         form {
             background-color: #f9f9f9;
             padding: 20px;
             border-radius: 5px;
         }
+
         label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
         }
-        input[type="text"], textarea {
+
+        input[type="text"],
+        textarea {
             width: 100%;
             padding: 8px;
             margin-bottom: 15px;
@@ -34,9 +74,11 @@
             border-radius: 4px;
             box-sizing: border-box;
         }
+
         textarea {
             height: 150px;
         }
+
         button {
             background-color: #3498db;
             color: white;
@@ -45,11 +87,13 @@
             border-radius: 4px;
             cursor: pointer;
         }
+
         button:hover {
             background-color: #2980b9;
         }
     </style>
 </head>
+
 <body>
     <h1>Create a New Blog Post</h1>
     <form method="post">
@@ -59,7 +103,8 @@
         <label for="description">Description:</label>
         <textarea id="description" name="description" required></textarea>
 
-        <button type="submit">Create Post</button>
+        <button type="submit" name="submit">Create Post</button>
     </form>
 </body>
+
 </html>
